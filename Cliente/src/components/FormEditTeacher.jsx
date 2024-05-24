@@ -14,6 +14,7 @@ const FormEditTeacher = ({teacherData, setTeacherData}) => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState(teacherData.phone);
   const [area, setArea] = useState(teacherData.area);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ const FormEditTeacher = ({teacherData, setTeacherData}) => {
     formData.append("area", area);
 
     const response = await fetch(
-      `http://localhost:3003/teachers/${teacherData._id}/editTeacher`,
+      `${API_URL}/teachers/${teacherData._id}/editTeacher`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },

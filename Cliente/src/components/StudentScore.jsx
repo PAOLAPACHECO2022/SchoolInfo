@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 import Aside from "./Aside";
 import "../index.css";
 
+
 const StudentScore = () => {
   const dispatch = useDispatch();
   const scores = useSelector((state) => state.scores);
@@ -13,10 +14,10 @@ const StudentScore = () => {
   const user = useSelector((state) => state.user);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
-
+  const API_URL = process.env.REACT_APP_API_URL; 
   const getScoresRecord = async () => {
     const response = await fetch(
-      `http://localhost:3003/scores/${user._id}/student`,
+      `${API_URL}/scores/${user._id}/student`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

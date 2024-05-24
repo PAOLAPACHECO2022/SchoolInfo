@@ -9,9 +9,10 @@ const EditCourse = () => {
     const token = useSelector((state) => state.token);
     const {gradeId, courseId} = useParams();
     const [courseData, setCourseData] = useState(null);
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const getGrade = async () => {
-        const response = await fetch(`http://localhost:3003/courses/${courseId}/course`, {
+        const response = await fetch(`${API_URL}/courses/${courseId}/course`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });

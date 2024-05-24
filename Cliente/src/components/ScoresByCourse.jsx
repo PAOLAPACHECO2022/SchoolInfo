@@ -19,7 +19,7 @@ const ScoresByCourse = () => {
 
   const getScores = useCallback(async () => {
     const response = await fetch(
-      `http://localhost:3003/scores/${courseId}/course`,
+      `https://schoolinfo.com/scores/${courseId}/course`, // Cambia esta línea
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -43,7 +43,7 @@ const ScoresByCourse = () => {
 
   const handleDelete = async (scoreId) => {
     const response = await fetch(
-      `http://localhost:3003/scores/${scoreId}/delete`,
+      `https://schoolinfo.com/scores/${scoreId}/delete`, // Cambia esta línea
       {
         method: "DELETE",
         headers: {
@@ -154,4 +154,3 @@ const ScoresByCourse = () => {
 };
 
 export default ScoresByCourse;
-

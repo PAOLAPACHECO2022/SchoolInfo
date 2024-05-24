@@ -4,15 +4,17 @@ import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import '../index.css'; 
+
 const StudentPerformancec = () => {
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.user);
   const [currentPage, setCurrentPage] = useState(0);
   const [performancecRecord, setPerformancecRecord] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getPerformancecRecord = async () => {
     const response = await fetch(
-      `http://localhost:3003/performancec/${user._id}`,
+      `${API_URL}/performancec/${user._id}`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

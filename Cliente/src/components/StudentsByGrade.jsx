@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 import Aside from "./Aside";
 import { useNavigate, useParams } from "react-router-dom";
 import '../index.css'; 
-
+const API_URL = process.env.REACT_APP_API_URL;
 const StudentsByGrade = () => {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students);
@@ -16,7 +16,7 @@ const StudentsByGrade = () => {
   const { gradeId } = useParams();
 
   const getStudents = useCallback(async () => {
-    const response = await fetch(`http://localhost:3003/students/${gradeId}`, {
+    const response = await fetch(`${API_URL}/students/${gradeId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -38,7 +38,7 @@ const StudentsByGrade = () => {
 
   const handleDelete = async (studentId) => {
     const response = await fetch(
-      `http://localhost:3003/students/${studentId}/delete`,
+      `${API_URL}/students/${studentId}/delete`,
       {
         method: "DELETE",
         headers: {

@@ -12,14 +12,14 @@ const FormEditScore = ({ scoreData, setScoreData, courseId, gradeId }) => {
   const [score3, setScore3] = useState(scoreData.score3);
   const [score4, setScore4] = useState(scoreData.score4);
   const [promedio, setPromedio] = useState(scoreData.promedio);
-
+  const API_URL = process.env.REACT_APP_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("area", area);
 
     const response = await fetch(
-      `http://localhost:3003/scores/${scoreData._id}/edit`,
+      `${API_URL}/scores/${scoreData._id}/edit`,
       {
         method: "PATCH",
         headers: {

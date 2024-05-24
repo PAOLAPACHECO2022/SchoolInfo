@@ -9,6 +9,7 @@ const NewStudent = () => {
   const { gradeId } = useParams();
   const token = useSelector((state) => state.token);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,7 +32,8 @@ const NewStudent = () => {
     formData.append("gradeId", gradeId);
 
     const savedStudentResponse = await fetch(
-      "http://localhost:3003/auth/registerStudent",
+     
+      `${API_URL}/auth/registerStudent`,
       {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },

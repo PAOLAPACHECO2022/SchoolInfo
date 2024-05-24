@@ -12,6 +12,7 @@ const NewActivity = () => {
   const { courseId, gradeId } = useParams();
   const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
+  const API_URL = process.env.REACT_APP_API_URL;
   
   const [area, setArea] = useState('');
   const [indicator, setIndicator] = useState('');
@@ -24,7 +25,8 @@ const NewActivity = () => {
     e.preventDefault();
 
     const savedActivityResponse = await fetch(
-      "http://localhost:3003/activities/createActivity",
+     
+      `${API_URL}/activities/createActivity`,
       {
         method: "POST",
         headers: {
@@ -53,7 +55,12 @@ const NewActivity = () => {
   };
 
   const getStudents = async () => {
-    const response = await fetch(`http://localhost:3003/students/${gradeId}`, {
+    const response = await fetch(
+      
+    
+      
+      `${API_URL}/students/${gradeId}`,
+      {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });

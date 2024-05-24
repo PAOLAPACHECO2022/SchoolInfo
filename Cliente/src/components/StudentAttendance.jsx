@@ -9,10 +9,11 @@ const StudentAttendance = () => {
   const user = useSelector((state) => state.user);
   const [currentPage, setCurrentPage] = useState(0);
   const [attendanceRecord, setAttendanceRecord] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getAttendanceRecord = async () => {
     const response = await fetch(
-      `http://localhost:3003/attendance/${user._id}`,
+      `${API_URL}/attendance/${user._id}`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

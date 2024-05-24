@@ -11,9 +11,12 @@ const HomePage = () => {
     const [totalTeachers, setTotalTeachers] = useState(0);
     const [totalGrades, setTotalGrades] = useState(0);
     const [totalCourses, setTotalCourses] = useState(0);
+    const API_URL = process.env.REACT_APP_API_URL;
+    
 
     const countStudents = async () => {
-        const response = await fetch("http://localhost:3003/students/count/all", {
+        const response = await fetch(
+        `${API_URL}/students/count/all`,{
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });
@@ -22,7 +25,8 @@ const HomePage = () => {
     };
 
     const countTeachers = async () => {
-        const response = await fetch("http://localhost:3003/teachers/count/all", {
+        const response = await fetch(
+        `${API_URL}/teachers/count/all`,{
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });
@@ -31,7 +35,8 @@ const HomePage = () => {
     };
 
     const countGrades = async () => {
-        const response = await fetch("http://localhost:3003/grades/count/all", {
+        const response = await fetch(
+        `${API_URL}/grades/count/all`,{
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });
@@ -40,7 +45,8 @@ const HomePage = () => {
     };
 
     const countCourses = async () => {
-        const response = await fetch("http://localhost:3003/courses/count/all", {
+        const response = await fetch(
+        `${API_URL}/courses/count/all`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });

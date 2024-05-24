@@ -5,7 +5,7 @@ import '../index.css';
 
 const FormEditActivity = ({ activityData, setActivityData, courseId, gradeId }) => {
   const navigate = useNavigate();
-
+  const API_URL = process.env.REACT_APP_API_URL;
 
 
   const token = useSelector((state) => state.token);
@@ -24,7 +24,7 @@ const FormEditActivity = ({ activityData, setActivityData, courseId, gradeId }) 
     formData.append("area", area);
 
     const response = await fetch(
-      `http://localhost:3003/activities/${activityData._id}/edit`,
+      `${API_URL}/activities/${activityData._id}/edit`,
       {
         method: "PATCH",
         headers: {

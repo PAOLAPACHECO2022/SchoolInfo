@@ -14,12 +14,13 @@ const ActivitiesByCourse = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const { courseId, gradeId } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [searchTerm, setSearchTerm] = useState(""); // Para el término de búsqueda
 
   const getActivities = async () => {
     const response = await fetch(
-      `http://localhost:3003/activities/${courseId}/course`,
+      `${API_URL}/activities/${courseId}/course`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -43,7 +44,7 @@ const ActivitiesByCourse = () => {
 
   const handleDelete = async (activityId) => {
     const response = await fetch(
-      `http://localhost:3003/activities/${activityId}/delete`,
+      `${API_URL}/activities/${activityId}/delete`,
       {
         method: "DELETE",
         headers: {

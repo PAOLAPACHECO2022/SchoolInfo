@@ -9,9 +9,10 @@ const EditScore = () => {
     const token = useSelector((state) => state.token);
     const {courseId, gradeId, scoreId} = useParams();
     const [scoreData, setScoreData] = useState(null);
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const getScore = async () => {
-        const response = await fetch(`http://localhost:3003/scores/${scoreId}/score`, {
+        const response = await fetch(`${API_URL}/scores/${scoreId}/score`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });

@@ -14,9 +14,11 @@ const CoursesByGrade = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
   const { gradeId } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   const getCourses = async () => {
-    const response = await fetch(`http://localhost:3003/courses/${gradeId}`, {
+    const response = await fetch(`${API_URL}/courses/${gradeId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -33,7 +35,7 @@ const CoursesByGrade = () => {
   };
 
   const handleDelete = async (courseId) => {
-    const response = await fetch(`http://localhost:3003/courses/${courseId}/delete`, {
+    const response = await fetch(`${API_URL}/courses/${courseId}/delete`, {
       method: "DELETE",
       headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json",},
     });

@@ -7,6 +7,7 @@ import '../index.css';
 const NewTeacher = () => {
   const token = useSelector((state) => state.token);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,6 +15,7 @@ const NewTeacher = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [area, setArea] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +28,8 @@ const NewTeacher = () => {
     formData.append("area", area);
 
     const savedTeacherResponse = await fetch(
-      "http://localhost:3003/auth/registerTeacher",
+      
+      `${API_URL}/auth/registerTeacher`,
       {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },

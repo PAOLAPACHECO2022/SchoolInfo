@@ -9,9 +9,10 @@ const EditTeacher = () => {
     const token = useSelector((state) => state.token);
     const {teacherId} = useParams();
     const [teacherData, setTeacherData] = useState(null);
+    const API_URL = process.env.REACT_APP_API_URL;
 
     const getTeacher = async () => {
-        const response = await fetch(`http://localhost:3003/teachers/${teacherId}/teacher`, {
+        const response = await fetch(`${API_URL}/teachers/${teacherId}/teacher`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`},
         });

@@ -12,6 +12,7 @@ const NewScore = () => {
   const { courseId, gradeId } = useParams();
   const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [area, setArea] = useState('');
   const [score1, setScore1] = useState(0);
@@ -25,7 +26,8 @@ const NewScore = () => {
     e.preventDefault();
 
     const savedScoreResponse = await fetch(
-      "http://localhost:3003/scores/createScore",
+     
+      `${API_URL}/scores/createScore`,
       {
         method: "POST",
         headers: {
@@ -54,7 +56,7 @@ const NewScore = () => {
   };
 
   const getStudents = async () => {
-    const response = await fetch(`http://localhost:3003/students/${gradeId}`, {
+    const response = await fetch(`${API_URL}/students/${gradeId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });

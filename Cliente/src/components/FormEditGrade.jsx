@@ -5,6 +5,7 @@ import '../index.css';
 const FormEditGrade = ({ gradeData, setGradeData, level }) => {
   const navigate = useNavigate();
   const token = useSelector((state) => state.token);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [gradeName, setGradeName] = useState(gradeData.gradeName);
   const [levelName, setLevelName] = useState(level);
@@ -12,7 +13,7 @@ const FormEditGrade = ({ gradeData, setGradeData, level }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      `http://localhost:3003/grades/${gradeData._id}/edit`,
+      `${API_URL}/grades/${gradeData._id}/edit`,
       {
         method: "PATCH",
         headers: {

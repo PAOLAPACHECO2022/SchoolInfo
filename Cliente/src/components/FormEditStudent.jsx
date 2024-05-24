@@ -5,6 +5,7 @@ import '../index.css';
 const FormEditStudent = ({studentData, setStudentData, gradeId}) => {
   const token = useSelector((state) => state.token);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   function dateFormated(date) {
     let dateObj = new Date(date);
@@ -36,7 +37,7 @@ const FormEditStudent = ({studentData, setStudentData, gradeId}) => {
     formData.append("gradeId", gradeId);
 
     const response = await fetch(
-      `http://localhost:3003/students/${studentData._id}/editStudent`,
+      `${API_URL}/students/${studentData._id}/editStudent`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },

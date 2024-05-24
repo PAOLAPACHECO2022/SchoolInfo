@@ -13,9 +13,13 @@ const GradesByLevel = () => {
   const grades = useSelector((state) => state.grades);
   const token = useSelector((state) => state.token);
   const { level, action } = useParams();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getGrades = async () => {
-    const response = await fetch(`http://localhost:3003/grades/${level}`, {
+    const response = await fetch(
+      `${API_URL}/grades/${level}`, 
+     
+    {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
